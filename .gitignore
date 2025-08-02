@@ -1,0 +1,7 @@
+# Ignore datasets
+data/*.txt
+data/*.npy
+data/*.json
+data/*.pkl
+__pycache__/
+*.pyc
