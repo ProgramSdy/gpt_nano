@@ -1,11 +1,19 @@
 
-if __name__ == "__main__":
-    sample_text = "batcgus"
-    set_1 = set(sample_text)
-    list_1 = list(set_1)
-    list_1_sorted = sorted(list_1)
-    char = enumerate(list_1_sorted)
-    print("Unique characters in sample text:", set_1)
-    print("List of unique characters:", list_1)
-    print("Sorted list of unique characters:", list_1_sorted)
-    print("Enumerated characters:", list(char))
+
+import numpy as np
+import os
+import pickle
+from model.tokenizer import CharTokenizer
+
+# 1. Load text
+print("📂 Loading TinyStories dataset...")
+with open("data/tinystories_train.txt", "r", encoding="utf-8") as f:
+    train_text = f.read()
+with open("data/tinystories_valid.txt", "r", encoding="utf-8") as f:
+    val_text = f.read()
+
+# 2. Build tokenizer from full dataset (train + val)
+print("🧠 Building tokenizer...")
+full_text = train_text + val_text
+tokenizer = CharTokenizer(full_text)
+print(f"🔡 Vocab size: {tokenizer.vocab_size}")

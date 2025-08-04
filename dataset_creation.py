@@ -1,4 +1,4 @@
-# train.py
+# dataset_creation.py
 
 import numpy as np
 import os
