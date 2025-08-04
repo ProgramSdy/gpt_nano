@@ -5,6 +5,7 @@ import torch
 from torch import nn, optim
 from model.transformer import TransformerModel
 import pickle
+from tqdm import tqdm  # 👈 import tqdm
 
 # Load data
 train_data = np.load("data/train.npy")
@@ -48,7 +49,8 @@ for epoch in range(num_epochs):
     model.train()
     total_loss = 0
 
-    for step in range(100):  # adjust for larger training
+    print(f"\n🚀 Starting Epoch {epoch+1}/{num_epochs}")
+    for step in tqdm(range(100), desc=f"Epoch {epoch+1}", leave=False):  # 👈 wrap tqdm
         x_batch, y_batch = get_batch(train_data, batch_size, context_length)
         logits = model(x_batch)
         loss = criterion(logits.view(-1, vocab_size), y_batch.view(-1))
@@ -58,9 +60,6 @@ for epoch in range(num_epochs):
         optimizer.step()
 
         total_loss += loss.item()
-
-        if step % 10 == 0:
-            print(f"Epoch {epoch+1}, Step {step}, Loss: {loss.item():.4f}")
 
     avg_loss = total_loss / 100
     print(f"✅ Epoch {epoch+1} completed. Avg Loss: {avg_loss:.4f}")

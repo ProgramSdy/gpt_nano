@@ -42,12 +42,12 @@ def write_tokens_to_memmap(text, tokenizer, path, total_tokens, chunk_size=100_0
     memmap_array.flush()
     print(f"✅ Saved to {path}")
 
-# 5. Process train
+# 5. Process train dataset
 print("🔄 Encoding train set...")
 train_total_tokens = count_tokens(train_text, tokenizer)
 write_tokens_to_memmap(train_text, tokenizer, "data/train.npy", train_total_tokens)
 
-# 6. Process val
+# 6. Process validation dataset
 print("🔄 Encoding validation set...")
 val_total_tokens = count_tokens(val_text, tokenizer)
 write_tokens_to_memmap(val_text, tokenizer, "data/val.npy", val_total_tokens)
