@@ -5,3 +5,5 @@ data/*.json
 data/*.pkl
 __pycache__/
 *.pyc
+venv_gpu/
+venv*/
