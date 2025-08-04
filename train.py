@@ -8,8 +8,8 @@ import pickle
 from tqdm import tqdm  # 👈 import tqdm
 
 # Load data
-train_data = np.load("data/train.npy")
-val_data = np.load("data/val.npy")
+train_data = np.load("data/train.npy", allow_pickle=True)
+val_data = np.load("data/val.npy", allow_pickle=True)
 
 # Convert to PyTorch tensors
 train_data = torch.from_numpy(train_data).long()
