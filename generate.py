@@ -10,10 +10,10 @@ with open("data/tokenizer.pkl", "rb") as f:
 
 # Model parameters (must match what was used during training)
 vocab_size = tokenizer.vocab_size
-embed_dim = 128
-num_heads = 4
-num_layers = 2
-context_length = 128
+embed_dim = 512
+num_heads = 16
+num_layers = 6
+context_length = 256
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
