@@ -10,8 +10,8 @@ with open("data/tokenizer.pkl", "rb") as f:
 
 # Model parameters (must match what was used during training)
 vocab_size = tokenizer.vocab_size
-embed_dim = 512
-num_heads = 16
+embed_dim = 256
+num_heads = 8
 num_layers = 6
 context_length = 256
 
