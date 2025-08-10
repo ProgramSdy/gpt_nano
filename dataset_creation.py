@@ -25,7 +25,7 @@ def clean_text(s):
     s = s.replace("“", '"').replace("”", '"').replace("’", "'").replace("‘", "'")
     s = s.replace("—", "-").replace("–", "-").replace("…", "...")
     # Keep only allowed chars
-    s = re.sub(r"[^a-z0-9.,!?;:'\"()\n -]", "", s)
+    s = re.sub(r"[^a-zA-Z0-9.,!?;:'\"()\n -]", "", s)
     return s
 
 print("🧠 Building tokenizer...")

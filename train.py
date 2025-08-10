@@ -24,7 +24,7 @@ embed_dim       = 256
 num_heads       = 8
 num_layers      = 6
 context_length  = 256
-batch_size      = 128
+batch_size      = 256
 learning_rate   = 3e-4
 num_epochs      = 20
 
