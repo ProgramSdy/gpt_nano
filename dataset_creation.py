@@ -17,8 +17,6 @@ with open("data/tinystories_valid.txt", "r", encoding="utf-8") as f:
 # 2. Clean the dataset text and Build tokenizer from full dataset (train + val)
 
 def clean_text(s):
-    # Lowercase
-    s = s.lower()
     # Normalize Unicode (e.g., é → e)
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode('ascii')
     # Replace fancy quotes/dashes/ellipsis

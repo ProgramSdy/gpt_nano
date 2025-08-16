@@ -13,15 +13,13 @@ with open("data/tinystories_valid.txt", "r", encoding="utf-8") as f:
 print("🧠 Building tokenizer...")
 
 def clean_text(s):
-    # Lowercase
-    s = s.lower()
     # Normalize Unicode (e.g., é → e)
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode('ascii')
     # Replace fancy quotes/dashes/ellipsis
     s = s.replace("“", '"').replace("”", '"').replace("’", "'").replace("‘", "'")
     s = s.replace("—", "-").replace("–", "-").replace("…", "...")
     # Keep only allowed chars
-    s = re.sub(r"[^a-z0-9.,!?;:'\"()\n -]", "", s)
+    s = re.sub(r"[^a-zA-Z0-9.,!?;:'\"()\n -]", "", s)
     return s
 
 train_text = clean_text(train_text)
@@ -34,4 +32,5 @@ ids = tokenizer.encode(text_sample)
 assert isinstance(ids, list) and all(isinstance(i, int) for i in ids)
 assert tokenizer.decode(ids) == text_sample
 print("Vocab size:", tokenizer.vocab_size)
+print(tokenizer.chars)
 print(ids)
